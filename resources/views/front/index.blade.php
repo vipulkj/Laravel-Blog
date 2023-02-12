@@ -14,7 +14,7 @@
                 <div class="meta-category">
                   <span>Fashion</span>
                 </div>
-                <a href="post-details.html"><h4>Morbi dapibus condimentum</h4></a>
+                <a href="post-details.html"><h4> dapibus condimentum</h4></a>
                 <ul class="post-info">
                   <li><a href="#">Admin</a></li>
                   <li><a href="#">May 12, 2020</a></li>
