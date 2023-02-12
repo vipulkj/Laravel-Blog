@@ -1,0 +1,17 @@
+.menu-trigger1{
+    /* display: flex; */
+    height: 30px;
+    width: 30px;
+    border: 1px solid #444;
+    cursor: pointer;
+}
+
+.mobile-menu-trigger{
+    position: fixed;
+    width: 32px;
+    background-color: #fff;
+    box-shadow: 0 0 15px #ccc;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
