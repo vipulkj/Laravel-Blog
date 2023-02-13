@@ -73,9 +73,11 @@
                 <button class="btn btn-primary mr-2" ><a href="{{ route('login')}}" class="text-white">Log In</a> </button>
                 <!-- Messages Dropdown Menu -->            
                 <button class="btn btn-danger"><a href="{{ route('logout')}}" class="text-white">Log Out</a> </button>
-
+                    <div class="user-profile-img">
+                        <img src="{{ asset('images/user-images/'.Auth::user()->image) }}" alt="" width="50px" height="30px" class="my-2 mx-2"> 
+                    </div>
+                    <div class="text-center my-2 mx-2">Welcome <span class="text-info">{{ Auth::user()->username }}</span></div>
                 
-                <div class="text-center my-2 mx-2">Welcome <span class="text-info">{{ session('username')}}</span></div>
                 
                 <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
