@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserControler extends Controller
 {
@@ -172,7 +173,35 @@ class UserControler extends Controller
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
-
+        session()->flash('msg1','You Logged Out Recently');
         return redirect('admin/login');
+    }
+
+    public function changepassword(){
+        return view('admin.changepassword');
+    }
+
+    public function resetpassword(Request $request){
+        $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+
+        $dbpassword = Auth::user()->password;
+        $dbid = Auth::id();
+
+        if (Hash::check($request->current_password, $dbpassword)){
+            User::whereid($dbid)->update([
+                'password' => Hash::make($request->password)
+                
+            ]);
+            return redirect('admin/index')->with(
+                session()->flash('msg','Password Updated Successfully')
+             );
+        }else{
+            return back()->withErrors(
+               session()->flash('error','Invalid password')
+            );
+        }
     }
 }

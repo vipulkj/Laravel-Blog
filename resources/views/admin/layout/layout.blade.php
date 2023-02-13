@@ -49,30 +49,18 @@
                     <a class="nav-link" data-widget="pushmenu" href="" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ route('index')}}" class="nav-link">Home</a>
+                    <a href="{{ route('changepassword')}}}" class="nav-link" title="Change Password"><i class="fa-solid fa-key"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
+                    <a href="{{ route('logout')}}" class="nav-link" title="Logout"> <i class="fa-solid fa-power-off"></i> </a>
                 </li>
             </ul>
 
-            <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
+            
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-                <button class="btn btn-primary mr-2" ><a href="{{ route('login')}}" class="text-white">Log In</a> </button>
                 <!-- Messages Dropdown Menu -->            
-                <button class="btn btn-danger"><a href="{{ route('logout')}}" class="text-white">Log Out</a> </button>
                     <div class="user-profile-img">
                         <img src="{{ asset('images/user-images/'.Auth::user()->image) }}" alt="" width="50px" height="30px" class="my-2 mx-2"> 
                     </div>

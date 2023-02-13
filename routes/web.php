@@ -49,7 +49,9 @@ Route::group(['middleware' => ['auth']], function () {
         return view('admin/index');
     })->name('index');
 
+    Route::get('/admin/changepassword',[UserControler::class,'changepassword'])->name('changepassword');
 
+    Route::post('/admin/changepassword/reset',[UserControler::class,'resetpassword'])->name('resetpassword');
     // category Routes
 
     Route::get('/admin/category', [CategoryController::class, 'viewCategory'])->name('category');

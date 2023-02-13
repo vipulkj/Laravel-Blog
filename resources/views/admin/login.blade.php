@@ -57,6 +57,7 @@
           <!-- /.col -->
         </div>
       </form>
+      <span class="text-danger text-center">{{session('msg1')}}</span>
 
       <div class="social-auth-links text-center mb-3">
           <p>- OR -</p>
