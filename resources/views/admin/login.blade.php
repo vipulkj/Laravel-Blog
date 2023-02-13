@@ -60,7 +60,7 @@
 
       <div class="social-auth-links text-center mb-3">
           <p>- OR -</p>
-          <a href="{{ route('dashboard')}}" class="btn btn-block btn-info">
+          <a href="{{ route('index')}}" class="btn btn-block btn-info">
             <i class="fab fa-google-plus mr-2"></i> Back To Home
           </a>
         <a href="#" class="btn btn-block btn-primary">

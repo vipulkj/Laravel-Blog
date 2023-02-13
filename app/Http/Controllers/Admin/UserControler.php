@@ -156,9 +156,9 @@ class UserControler extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
+            $request->session()->regenerateToken();
+            $request->session()->put('username', Auth::User()->username);
+            return redirect()->intended('admin/index');
         }
 
         return back()->withErrors([
@@ -173,6 +173,6 @@ class UserControler extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('login');
+        return redirect('admin/login');
     }
 }

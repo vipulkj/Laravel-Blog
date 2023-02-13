@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/admin/index', function () {
         return view('admin/index');
-    })->name('dashboard');
+    })->name('index');
 
 
     // category Routes
