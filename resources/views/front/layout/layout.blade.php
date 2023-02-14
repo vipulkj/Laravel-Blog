@@ -61,7 +61,7 @@ https://templatemo.com/tm-551-stand-blog
                 <a class="nav-link" href="{{ route('about')}}">About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('all-posts')}}">Blog Entries</a>
+                <a class="nav-link" href="">Blog Entries</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('post-detail')}}">Post Details</a>

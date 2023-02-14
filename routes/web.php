@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserControler;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HomePageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,11 +88,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/comments/delete/{id}',[CommentController::class,'destroy'])->name('comments.delete');
 });
 
+// front route
+
+Route::get('/',[HomePageController::class,'homepage'])->name('home');
+Route::get('/post/{id}',[HomePageController::class,'post'])->name('single.post');
+Route::get('/category/{slug}',[HomePageController::class,'categorywisepost'])->name('category.posts');
 
 
-Route::get('/', function () {
-    return view('front/index');
-})->name('home');
+
 Route::get('/front/about', function () {
     return view('front/about');
 })->name('about');
@@ -104,6 +108,6 @@ Route::get('/front/post', function () {
 
 Route::post('/front/post/comments',[CommentController::class,'store'])->name('storecomments');
 
-Route::get('/front/all-posts', function () {
-    return view('front/all-posts');
-})->name('all-posts');
+// Route::get('/front/all-posts', function () {
+//     return view('front/all-posts');
+// })->name('all-posts');
