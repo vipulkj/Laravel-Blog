@@ -8,6 +8,7 @@
 
 
 <div class="row mx-3">
+
   <div class="col-12">
     <div class="card">
       <div class="card-header bg-primary">
@@ -25,65 +26,41 @@
       </div>
       <!-- /.card-header -->
       <div class="card-body table-responsive p-0">
+        @if(count($comments) == 0 )
+        <div class="jumbotron">
+          <h1 class="display-4 text-danger">Sorry, No Data Found!</h1>
+        </div>
+        @else
         <table class="table table-hover text-nowrap">
           <thead>
             <tr>
               <th>ID</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Subject</th>
               <th>Comment</th>
               <th>Status</th>
               <th>Action</th>
-
             </tr>
           </thead>
           <tbody>
+            @foreach($comments as $comment)
             <tr>
-              <td>1</td>
-              <td>Nitin</td>
-              <td>nitin33@gmail.com</td>
-              <td>This website is very helpfull </td>
-              <td>pending</td>
+              <td>{{$loop->iteration}}</td>
+              <td>{{ $comment->name}}</td>
+              <td>{{ $comment->email}}</td>
+              <td>{{ $comment->subject}}</td>
+              <td>{{ Str::limit($comment->comment, 10) }}</td>
+              <td>{{ $comment->status}}</td>
               <th>
-                <a href="" class="btn btn-primary">Edit</a>
-                <a href="" class="btn btn-danger">Delete</a>
+                <a href="" class="btn btn-primary"><i class="fas fa-eye m-1"></i>View</a>
+                <a href="{{ route('comments.delete',['id' => $comment->id])}}" class="btn btn-danger" id="delete"><i class="fas fa-trash m-1"></i>Delete</a>
               </th>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Nitin</td>
-              <td>nitin33@gmail.com</td>
-              <td>This website is very helpfull </td>
-              <td>pending</td>
-              <th>
-                <a href="" class="btn btn-primary">Edit</a>
-                <a href="" class="btn btn-danger">Delete</a>
-              </th>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Nitin</td>
-              <td>nitin33@gmail.com</td>
-              <td>This website is very helpfull </td>
-              <td>pending</td>
-              <th>
-                <a href="" class="btn btn-primary">Edit</a>
-                <a href="" class="btn btn-danger">Delete</a>
-              </th>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td>Nitin</td>
-              <td>nitin33@gmail.com</td>
-              <td>This website is very helpfull </td>
-              <td>pending</td>
-              <th>
-                <a href="" class="btn btn-primary">Edit</a>
-                <a href="" class="btn btn-danger">Delete</a>
-              </th>
-            </tr>
+            @endforeach
           </tbody>
         </table>
+        @endif
       </div>
       <!-- /.card-body -->
     </div>

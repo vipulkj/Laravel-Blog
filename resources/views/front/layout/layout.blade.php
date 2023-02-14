@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{ asset('front/assets/css/fontawesome.css')}}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/templatemo-stand-blog.css')}}">
     <link rel="stylesheet" href="{{ asset('front/assets/css/owl.css')}}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!--
 
 TemplateMo 551 Stand Blog
@@ -109,7 +111,14 @@ https://templatemo.com/tm-551-stand-blog
     <script src="{{ asset('front/assets/js/slick.js')}}"></script>
     <script src="{{ asset('front/assets/js/isotope.js')}}"></script>
     <script src="{{ asset('front/assets/js/accordions.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    @if(Session::has('msg'))
+    <script type="text/javascript">
+        toastr.info("{{ session('msg')}} ");
+    </script>
+    @endif
+    
     <script language = "text/Javascript"> 
       cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
       function clearField(t){                   //declaring the array outside of the

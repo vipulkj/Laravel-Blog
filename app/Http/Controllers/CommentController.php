@@ -14,7 +14,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+        return view('admin/comments',compact('comments'));
     }
 
     /**
@@ -95,6 +96,7 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::where('id', $id)->delete();
+        return redirect()->back();
     }
 }

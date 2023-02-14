@@ -181,7 +181,6 @@
                             <fieldset>
                               <button type="submit" id="form-submit" class="main-button">Submit</button>
                             </fieldset>
-                          <span class="text-primary">{{ session('msg')}}</span>
                           </div>
                         </div>
                       </form>

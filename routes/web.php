@@ -26,9 +26,6 @@ Route::get('/admin/table', function () {
 // Route::get('/admin/users', function () {
 //     return view('admin/users');
 // })->name('user');
-Route::get('/admin/comments', function () {
-    return view('admin/comments');
-})->name('comments');
 
 
 Route::get('/admin/add-post', function () {
@@ -83,6 +80,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/user/edit/{id}', [UserControler::class, 'edit'])->name('user.edit');
     Route::post('/admin/user/edit/update/{id}', [UserControler::class, 'update'])->name('user.update');
     Route::get('/admin/user/delete/{id}', [UserControler::class, 'destroy'])->name('user.delete');
+
+
+    Route::get('/admin/comments',[CommentController::class,'index'])->name('comments');
+    Route::get('/admin/comments/delete/{id}',[CommentController::class,'destroy'])->name('comments.delete');
 });
 
 
