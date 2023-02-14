@@ -142,32 +142,46 @@
                       <h2>Your comment</h2>
                     </div>
                     <div class="content">
-                      <form id="comment" action="#" method="post">
+                      <form id="comment" action="{{ route('storecomments')}}" method="post">
+                        @csrf
                         <div class="row">
                           <div class="col-md-6 col-sm-12">
                             <fieldset>
-                              <input name="name" type="text" id="name" placeholder="Your name" required="">
+                              <input name="name" type="text" id="name" placeholder="Your name" >
                             </fieldset>
+                            @error('name')
+                            <span class="text-danger">{{ $message}}</span>
+                            @enderror
                           </div>
                           <div class="col-md-6 col-sm-12">
                             <fieldset>
-                              <input name="email" type="text" id="email" placeholder="Your email" required="">
+                              <input type="emal" name="email"  id="email" placeholder="Your email" >
                             </fieldset>
+                            @error('email')
+                            <span class="text-danger">{{ $message}}</span>
+                            @enderror
                           </div>
                           <div class="col-md-12 col-sm-12">
                             <fieldset>
                               <input name="subject" type="text" id="subject" placeholder="Subject">
                             </fieldset>
+                            @error('subject')
+                            <span class="text-danger">{{ $message}}</span>
+                            @enderror
                           </div>
                           <div class="col-lg-12">
                             <fieldset>
-                              <textarea name="message" rows="6" id="message" placeholder="Type your comment" required=""></textarea>
+                              <textarea name="comment" rows="6" id="message" placeholder="Type your comment" ></textarea>
                             </fieldset>
+                            @error('comment')
+                            <span class="text-danger">{{ $message}}</span>
+                            @enderror
                           </div>
                           <div class="col-lg-12">
                             <fieldset>
                               <button type="submit" id="form-submit" class="main-button">Submit</button>
                             </fieldset>
+                          <span class="text-primary">{{ session('msg')}}</span>
                           </div>
                         </div>
                       </form>

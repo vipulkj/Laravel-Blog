@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserControler;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -98,6 +99,9 @@ Route::get('/front/contact', function () {
 Route::get('/front/post', function () {
     return view('front/post');
 })->name('post-detail');
+
+Route::post('/front/post/comments',[CommentController::class,'store'])->name('storecomments');
+
 Route::get('/front/all-posts', function () {
     return view('front/all-posts');
 })->name('all-posts');
