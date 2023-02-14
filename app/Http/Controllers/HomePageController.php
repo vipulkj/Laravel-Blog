@@ -8,28 +8,31 @@ use Illuminate\Http\Request;
 
 class HomePageController extends Controller
 {
-    public function homepage(){
+    public function homepage()
+    {
         $categories = Category::all();
-        $posts = Post::where('status',1)->orderby('id','desc')->get();
-        return view('front.index',compact('posts','categories'));
+        $posts = Post::where('status', 1)->orderby('id', 'desc')->get();
+        return view('front.index', compact('posts', 'categories'));
     }
 
-    public function post($id){
+    public function post($id)
+    {
         $categories = Category::all();
-        $post = Post::where('status',1)->find($id);
+        $post = Post::where('status', 1)->find($id);
         $views = $post->views;
         $views++;
-        Post::where('id',$id)->update([
+        Post::where('id', $id)->update([
             'views' => $views
         ]);
-        return view('front.post',compact('post','categories'));
+        return view('front.post', compact('post', 'categories'));
     }
 
-    public function categorywisepost($slug){
-        $category = Category::where('slug',$slug)->first();
+    public function categorywisepost($slug)
+    {
+        $category = Category::where('slug', $slug)->first();
         $category_id = $category->id;
-        $posts = Post::where('category_id',$category_id)->where('status',1)->orderby('id','desc')->get();
+        $posts = Post::where('category_id', $category_id)->where('status', 1)->orderby('id', 'desc')->get();
         $categories = Category::all();
-        return view('front.all-posts',compact('posts','categories'));
+        return view('front.all-posts', compact('posts', 'categories'));
     }
 }
