@@ -15,7 +15,7 @@ class CommentController extends Controller
     public function index()
     {
         $comments = Comment::all();
-        return view('admin/comments',compact('comments'));
+        return view('admin.comment.comments',compact('comments'));
     }
 
     /**
@@ -85,7 +85,8 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        return view('admin.comment.view-comment',compact('comment'));
     }
 
     /**

@@ -83,6 +83,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('/admin/comments',[CommentController::class,'index'])->name('comments');
+    Route::get('/admin/comment/view/{id}',[CommentController::class,'show'])->name('comment.view');
     Route::get('/admin/comments/delete/{id}',[CommentController::class,'destroy'])->name('comments.delete');
 });
 
