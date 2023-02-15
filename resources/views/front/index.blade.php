@@ -65,10 +65,15 @@
                   <div class="post-options">
                     <div class="row">
                       <div class="col-6">
+                        <?php
+                        $tags = explode(' ',$post->tags);
+                        ?>
+
                         <ul class="post-tags">
                           <li><i class="fa fa-tags"></i></li>
-                          <li><a href="#">Beauty</a>,</li>
-                          <li><a href="#">Nature</a></li>
+                          @foreach($tags as $tag)
+                          <li><a href="#">{{$tag}}</a></li>
+                          @endforeach
                         </ul>
                       </div>
                       <div class="col-6">
@@ -137,14 +142,15 @@
                   <h2>Tag Clouds</h2>
                 </div>
                 <div class="content">
+                  <?php  
+                  
+                  $tags = explode(' ', $alltags);
+
+                  ?>
                   <ul>
-                    <li><a href="#">Lifestyle</a></li>
-                    <li><a href="#">Creative</a></li>
-                    <li><a href="#">HTML5</a></li>
-                    <li><a href="#">Inspiration</a></li>
-                    <li><a href="#">Motivation</a></li>
-                    <li><a href="#">PSD</a></li>
-                    <li><a href="#">Responsive</a></li>
+                    @foreach($tags as $tag)
+                    <li><a href="#">{{$tag}}</a></li>
+                    @endforeach
                   </ul>
                 </div>
               </div>

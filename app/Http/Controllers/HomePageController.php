@@ -13,9 +13,16 @@ class HomePageController extends Controller
         $categories = Category::all();
         $posts = Post::where('status', 1)->orderby('id', 'desc')->paginate('3');
 
+        $postTags = Post::where('status', 1)->select('tags')->get();
+        $alltags = "";
+        foreach ($postTags as $postTag){
+            $alltags.= $postTag->tags." ";
+        }
+    
+
         $popularPosts = Post::where('status', 1)->orderby('views', 'desc')->take(3)->get();
 
-        return view('front.index', compact('posts', 'categories','popularPosts'));
+        return view('front.index', compact('posts', 'categories','popularPosts','alltags'));
     }
 
     public function post($id)
