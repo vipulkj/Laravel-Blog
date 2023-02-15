@@ -45,7 +45,7 @@
                 </div>
                 <div class="down-content">
                   <span>{{ $post->category->category_name}}</span>
-                  <a href="post-details.html">
+                  <a href="{{ route('single.post',['id' => $post->id ])}}">
                     <h4>{{$post->title}}</h4>
                   </a>
                   <ul class="post-info">

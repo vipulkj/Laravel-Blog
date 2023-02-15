@@ -39,13 +39,13 @@
                       <img src="{{ asset('images/post-images/'.$post->image)}}" alt="">
                     </div>
                     <div class="down-content">
-                      <span>Lifestyle</span>
-                      <a href="post-details.html"><h4>{{$post->title}}</h4></a>
+                      <span>{{$post->category->category_name}}</span>
+                      <h4>{{$post->title}}</h4>
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
                         <li><a href="#">{{ $post->created_at->format('d M Y')}}</a></li>
                         <li><a href="#">{{$post->comments}} Comments</a></li>
-                        <li><a href="#">{{$post->likes}} Likes</a></li>
+                        <li><i class="fa fa-heart" id="like" style="cursor:pointer;" data-id="{{$post->id}}"></i> <a href="#" id="post-like">{{$post->likes}} Likes</a></li>
                         <li><a href="#">{{$post->views}} Views</a></li>
                       </ul>
                       <p>{{$post->description}}</p>
@@ -188,18 +188,13 @@
                     </div>
                     <div class="content">
                       <ul>
-                        <li><a href="post-details.html">
-                          <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-                          <span>May 31, 2020</span>
+                        @foreach( $relatedPosts as $post)
+                        <li><a href="{{ route('single.post',['id' => $post->id ])}}">
+                          <h5>{{ $post->title}}</h5>
+                          <span>{{ $post->created_at->format('d M Y')}}</span>
                         </a></li>
-                        <li><a href="post-details.html">
-                          <h5>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
-                          <span>May 28, 2020</span>
-                        </a></li>
-                        <li><a href="post-details.html">
-                          <h5>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
-                          <span>May 14, 2020</span>
-                        </a></li>
+                      
+                        @endforeach
                       </ul>
                     </div>
                   </div>
@@ -212,7 +207,7 @@
                     <div class="content">
                       <ul>
                       @foreach($categories as $category)
-                    <li><a href="#">- {{ $category->category_name}}</a></li>
+                    <li><a href="{{ route('category.posts',['slug' => $category->slug])}}">- {{ $category->category_name}}</a></li>
                     @endforeach
                       </ul>
                     </div>

@@ -93,6 +93,8 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/',[HomePageController::class,'homepage'])->name('home');
 Route::get('/post/{id}',[HomePageController::class,'post'])->name('single.post');
 Route::get('/category/{slug}',[HomePageController::class,'categorywisepost'])->name('category.posts');
+Route::get('/front/post/like/{id}',[HomePageController::class,'updateLikes']);
+
 
 
 

@@ -11,8 +11,11 @@ class HomePageController extends Controller
     public function homepage()
     {
         $categories = Category::all();
-        $posts = Post::where('status', 1)->orderby('id', 'desc')->get();
-        return view('front.index', compact('posts', 'categories'));
+        $posts = Post::where('status', 1)->orderby('id', 'desc')->paginate('3');
+
+        $popularPosts = Post::where('status', 1)->orderby('views', 'desc')->take(3)->get();
+
+        return view('front.index', compact('posts', 'categories','popularPosts'));
     }
 
     public function post($id)
@@ -24,7 +27,11 @@ class HomePageController extends Controller
         Post::where('id', $id)->update([
             'views' => $views
         ]);
-        return view('front.post', compact('post', 'categories'));
+        $relatedPosts = Post::where('category_id',$post->category_id)->where('status',1)->take(3)->get();
+
+
+
+        return view('front.post', compact('post', 'categories','relatedPosts'));
     }
 
     public function categorywisepost($slug)
@@ -34,5 +41,19 @@ class HomePageController extends Controller
         $posts = Post::where('category_id', $category_id)->where('status', 1)->orderby('id', 'desc')->get();
         $categories = Category::all();
         return view('front.all-posts', compact('posts', 'categories'));
+    }
+
+
+    public function updateLikes($id){
+        $post = Post::find($id);
+        $likes = $post->likes;
+        $likes++;
+        Post::where('id', $id)->update([
+            'likes' => $likes,
+        ]);
+        return response()->json([
+            'msg' => 'Post Liked',
+            'likes' => $likes
+        ]);
     }
 }
