@@ -1,13 +1,21 @@
 @extends('front/layout/layout')
 
+@section('title','STAND BLOG')
+
 @section('container')
 
+
+<?php 
+
+
+
+?>
 <!-- Page Content -->
 <!-- Banner Starts Here -->
 <div class="main-banner header-text">
   <div class="container-fluid">
     <div class="owl-banner owl-carousel">
-      @foreach ($posts as $post)
+      @foreach ($popularPosts as $post)
       <div class="item">
         <img src="{{ asset('images/post-images/'.$post->image)}}" alt="">
         <div class="item-content">
@@ -89,7 +97,7 @@
               </div>
             </div>
             @endforeach
-            <div class="row" class="">{{$posts->links()}}</div>
+            <div class="row" class="">{{$posts->appends(Request::all())->links()}}</div>
 
           </div>
         </div>
@@ -99,8 +107,10 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="sidebar-item search">
-                <form id="search_form" name="gs" method="GET" action="#">
-                  <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
+                <form id="search_form" name="gs" method="GET" action="{{ route('search')}}" class="d-flex ">
+                  @csrf
+                  <input type="text" name="search" class="searchText" placeholder="Search Post" autocomplete="on">
+                  <button class="btn btn-primary">Search</button>
                 </form>
               </div>
             </div>
@@ -139,7 +149,7 @@
             <div class="col-lg-12">
               <div class="sidebar-item tags">
                 <div class="sidebar-heading">
-                  <h2>Tag Clouds</h2>
+                  <h2>Post Tag</h2>
                 </div>
                 <div class="content">
                   <?php  
@@ -149,7 +159,7 @@
                   ?>
                   <ul>
                     @foreach($tags as $tag)
-                    <li><a href="#">{{$tag}}</a></li>
+                    <li><a href="{{ route('')}}">{{$tag}}</a></li>
                     @endforeach
                   </ul>
                 </div>

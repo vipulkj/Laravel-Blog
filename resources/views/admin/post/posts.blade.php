@@ -39,9 +39,9 @@
             <tr>
               <th>S.No</th>
               <th>Title</th>
+              <th>Slug</th>
               <th>Image</th>
               <th>Category</th>
-              <th>Likes</th>
               <th>Added On</th>
               <th>Views</th>
               <th>Status</th>
@@ -56,9 +56,9 @@
 
               <td>{{$loop->iteration }}</td>
               <td>{{$post->title}}</td>
+              <td>{{$post->slug}}</td>
               <td><img src="{{asset('images/post-images/'.$post->image)}}" alt="" height="50px" width="50px"></td>
               <td>{{$post->category->category_name}}</td>
-              <td>{{$post->likes}}</td>
               <td>{{$post->created_at->format('d M Y')}}</td>
               <td>{{$post->views}}</td>
               <td>

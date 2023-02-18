@@ -43,6 +43,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'slug' => 'required|unique:posts',
             'desc' => 'required',
             'category' => 'required',
             'image' => 'required|mimes:jpeg,png,jpg',
@@ -59,6 +60,7 @@ class PostController extends Controller
 
         Post::create([
             'title' => $request->title,
+            'slug' => $request->slug,
             'description' => $request->desc,
             'category_id' => $request->category,
             'image' => $file,
@@ -107,6 +109,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'slug' => 'required|unique:posts',
             'desc' => 'required',
             'category' => 'required',
             'image' => 'mimes:jpeg,png,jpg',
@@ -115,6 +118,7 @@ class PostController extends Controller
         ]);
         $data = [
             'title' => $request->title,
+            'slug' => $request->slug,
             'description' => $request->desc,
             'category_id' => $request->category,
             'tags' => $request->tags,
@@ -124,7 +128,7 @@ class PostController extends Controller
         ];
         $post = Post::find($id);
         $old_file = $post->image;
-        
+
         if($request->file('image')) {
             $image = $request->file('image');
             $ext = $image->extension();
@@ -184,4 +188,6 @@ class PostController extends Controller
         $post = Post::find($id);
         return view('admin.post.post-view',compact('post','category'));
     }
+
+
 }

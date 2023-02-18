@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserControler;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +71,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/post/edit/update/{id}', [PostController::class, 'update'])->name('post.update');
     Route::get('/admin/post/delete/{id}', [PostController::class, 'destroy'])->name('post.delete');
 
+    Route::get('/search',[HomePageController::class,'search'])->name('search');
+
     // post ajax routes
     Route::post('/admin/post/status/{id}', [PostController::class, 'changeStatus']);
 
@@ -86,6 +89,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/comments',[CommentController::class,'index'])->name('comments');
     Route::get('/admin/comment/view/{id}',[CommentController::class,'show'])->name('comment.view');
     Route::get('/admin/comments/delete/{id}',[CommentController::class,'destroy'])->name('comments.delete');
+
+
+    Route::get('/contacts',[ContactController::class,'index'])->name('contacts.request');
+    Route::get('/contacts/delete/{id}',[ContactController::class,'destroy'])->name('contact.delete');
+
 });
 
 // front route
@@ -94,6 +102,8 @@ Route::get('/',[HomePageController::class,'homepage'])->name('home');
 Route::get('/post/{id}',[HomePageController::class,'post'])->name('single.post');
 Route::get('/category/{slug}',[HomePageController::class,'categorywisepost'])->name('category.posts');
 Route::get('/front/post/like/{id}',[HomePageController::class,'updateLikes']);
+
+Route::get('/tags/{tags}',[HomePageController::class,'tagwisepost'])->name('tags.posts');
 
 
 
@@ -108,7 +118,8 @@ Route::get('/front/post', function () {
     return view('front/post');
 })->name('post-detail');
 
-Route::post('/front/post/comments',[CommentController::class,'store'])->name('storecomments');
+Route::post('/post/comments',[CommentController::class,'store'])->name('storecomments');
+Route::post('/contact',[HomePageController::class,'userContactStore'])->name('contactmessage.store');
 
 // Route::get('/front/all-posts', function () {
 //     return view('front/all-posts');

@@ -61,11 +61,20 @@
                                     <!-- Post -->
                                     <div class="post">
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-12">
                                                 <!-- <div class="user-block"> -->
                                                     
                                                     <span class="username">
                                                         <h1>Title - {{$post->title}}</h1>
+                                                        <!-- <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a> -->
+                                                    </span>
+                                                <!-- </div> -->
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <!-- <div class="user-block"> -->
+                                                    
+                                                    <span class="username">
+                                                        <h1>Post Slug - {{$post->slug}}</h1>
                                                         <!-- <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a> -->
                                                     </span>
                                                     <span class="description">Created Date - {{$post->created_at->format('d M Y')}}</span>
