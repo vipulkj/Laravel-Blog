@@ -155,6 +155,15 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
+                            <a href="{{ route('view')}}" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Comments Reply
+                                    <!-- <i class="fas fa-angle-left right"></i> -->
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
                             <a href="{{ route('contacts.request')}}" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>

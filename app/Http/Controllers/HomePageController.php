@@ -31,14 +31,19 @@ class HomePageController extends Controller
         return view('front.index', compact('posts', 'categories', 'popularPosts', 'alltags'));
     }
 
-    public function post($id)
+    public function post($slug)
     {
         
         $categories = Category::all();
-        $post = Post::where('status', 1)->find($id);
+
+        $post1 = Post::where('slug', $slug)->first();
+        $post_id = $post1->id;
+        $post = Post::where('title',$post_id)->where('status',1)->find($slug);
+
+        // $post = Post::where('status', 1)->find($id);
         $views = $post->views;
         $views++;
-        Post::where('id', $id)->update([
+        Post::where('slug', $slug)->update([
             'views' => $views
         ]);
         $relatedPosts = Post::where('category_id', $post->category_id)->where('status', 1)->take(3)->get();
@@ -53,6 +58,14 @@ class HomePageController extends Controller
         $posts = Post::where('category_id', $category_id)->where('status', 1)->orderby('id', 'desc')->get();
         $categories = Category::all();
         return view('front.all-posts', compact('posts', 'categories'));
+    }
+
+    public function slugwisepost($slug){
+        $post1 = Post::where('slug', $slug)->first();
+        $post_id = $post1->id;
+        $post = Post::where('title',$post_id)->where('status',1)->get();
+        
+        return view('front.post',compact('post'));
     }
 
     public function tagwisepost($tag)

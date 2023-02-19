@@ -64,7 +64,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -87,8 +87,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $comment = Comment::find($id);
-        return view('admin.comment.view-comment',compact('comment'));
+
     }
 
     /**
@@ -104,7 +103,5 @@ class CommentController extends Controller
     }
 
 
-    public function reply($id){
-        
-    }
+    
 }

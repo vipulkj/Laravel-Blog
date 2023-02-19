@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserControler;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\ReplyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,21 +88,28 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     Route::get('/admin/comments',[CommentController::class,'index'])->name('comments');
-    Route::get('/admin/comment/view/{id}',[CommentController::class,'show'])->name('comment.view');
     Route::get('/admin/comments/delete/{id}',[CommentController::class,'destroy'])->name('comments.delete');
-    Route::get('/admin/comments/reply/{id}',[CommentController::class,'commentview'])->name('comments.view');
 
-
+    Route::get('/admin/comment/view-comment/{id}',[ReplyController::class,'show'])->name('comment.view');
+    Route::post('/admin/comment/view-comment/reply',[ReplyController::class,'commentReply'])->name('comments.reply');
+    
+    
     Route::get('/contacts',[ContactController::class,'index'])->name('contacts.request');
     Route::get('/contacts/delete/{id}',[ContactController::class,'destroy'])->name('contact.delete');
-
+    
+    Route::get('/admin/all-replys',[ReplyController::class,'view'])->name('view');
+    Route::get('/admin/comment/view/{id}',[ReplyController::class,'viewReply'])->name('view.reply');
+    Route::get('/admin/all-replys/delete/{id}',[ReplyController::class,'destroy'])->name('reply.delete');
 });
 
 // front route
 
 Route::get('/',[HomePageController::class,'homepage'])->name('home');
-Route::get('/post/{id}',[HomePageController::class,'post'])->name('single.post');
+Route::get('/post/{slug}',[HomePageController::class,'post'])->name('single.post');
+
 Route::get('/category/{slug}',[HomePageController::class,'categorywisepost'])->name('category.posts');
+// Route::get('/post/{slug}',[HomePageController::class,'slugwisepost'])->name('slug.posts');
+
 Route::get('/front/post/like/{id}',[HomePageController::class,'updateLikes']);
 
 Route::get('/tags/{tag}',[HomePageController::class,'tagwisepost'])->name('tags.posts');
