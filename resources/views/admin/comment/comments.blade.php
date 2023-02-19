@@ -35,6 +35,7 @@
           <thead>
             <tr>
               <th>ID</th>
+              <th>post</th>
               <th>Name</th>
               <th>Email</th>
               <th>Subject</th>
@@ -47,6 +48,7 @@
             @foreach($comments as $comment)
             <tr>
               <td>{{$loop->iteration}}</td>
+              <td>{{ $comment->post->title}}</td>
               <td>{{ $comment->name}}</td>
               <td>{{ $comment->email}}</td>
               <td>{{ $comment->subject}}</td>
@@ -55,6 +57,7 @@
               <th>
                 <a href="{{ route('comment.view',['id' => $comment->id])}}" class="btn btn-primary"><i class="fas fa-eye m-1"></i>View</a>
                 <a href="{{ route('comments.delete',['id' => $comment->id])}}" class="btn btn-danger" id="delete"><i class="fas fa-trash m-1"></i>Delete</a>
+                <a href="{{ route('comments.reply',['id' => $comment->id])}}" class="btn btn-info" id="delete"><i class="fas fa-trash m-1"></i>Reply</a>
               </th>
             </tr>
             @endforeach

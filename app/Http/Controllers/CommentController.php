@@ -37,6 +37,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'post_id' => 'required|numeric',
             'name' => 'required',
             'email' => 'required',
             'subject' => 'required',
@@ -44,6 +45,7 @@ class CommentController extends Controller
         ]);
 
         Comment::create([
+            'post_id' => $request->post_id,
             'name' => $request->name,
             'email' => $request->email,
             'subject' => $request->subject,
@@ -99,5 +101,10 @@ class CommentController extends Controller
     {
         Comment::where('id', $id)->delete();
         return redirect()->back();
+    }
+
+
+    public function reply($id){
+        
     }
 }

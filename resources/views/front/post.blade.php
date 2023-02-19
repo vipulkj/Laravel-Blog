@@ -126,6 +126,8 @@
                       <form id="comment" action="{{ route('storecomments')}}" method="post">
                         @csrf
                         <div class="row">
+                        <input name="post_id" type="hidden" id="post_id" value="{{ $post->id }}" >
+
                           <div class="col-md-6 col-sm-12">
                             <fieldset>
                               <input name="name" type="text" id="name" placeholder="Your name" >

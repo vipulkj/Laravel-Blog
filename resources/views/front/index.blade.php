@@ -159,7 +159,7 @@
                   ?>
                   <ul>
                     @foreach($tags as $tag)
-                    <li><a href="{{ route('')}}">{{$tag}}</a></li>
+                    <li><a href="{{ route('tags.posts',['tag' => $tag])}}">{{$tag}}</a></li>
                     @endforeach
                   </ul>
                 </div>

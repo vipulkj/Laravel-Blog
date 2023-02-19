@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->integer('post_id');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('subject');
             $table->text('comment');
             $table->string('status')->default('pending');

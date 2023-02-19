@@ -22,9 +22,9 @@ class HomePageController extends Controller
 
         $alltags = "";
         foreach ($postTags as $postTag) {
-            $alltags .= $postTag->tags . " ";
+            $alltags .= trim($postTag->tags)." ";
         }
-        
+        $alltags = trim($alltags);
         
         $popularPosts = Post::where('status', 1)->orderby('views', 'desc')->take(3)->get();
 

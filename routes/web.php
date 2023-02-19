@@ -89,6 +89,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/comments',[CommentController::class,'index'])->name('comments');
     Route::get('/admin/comment/view/{id}',[CommentController::class,'show'])->name('comment.view');
     Route::get('/admin/comments/delete/{id}',[CommentController::class,'destroy'])->name('comments.delete');
+    Route::get('/admin/comments/reply/{id}',[CommentController::class,'commentview'])->name('comments.view');
 
 
     Route::get('/contacts',[ContactController::class,'index'])->name('contacts.request');
@@ -103,7 +104,7 @@ Route::get('/post/{id}',[HomePageController::class,'post'])->name('single.post')
 Route::get('/category/{slug}',[HomePageController::class,'categorywisepost'])->name('category.posts');
 Route::get('/front/post/like/{id}',[HomePageController::class,'updateLikes']);
 
-Route::get('/tags/{tags}',[HomePageController::class,'tagwisepost'])->name('tags.posts');
+Route::get('/tags/{tag}',[HomePageController::class,'tagwisepost'])->name('tags.posts');
 
 
 
