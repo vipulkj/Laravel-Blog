@@ -17,11 +17,13 @@ class ReplyController extends Controller
     public function commentReply(Request $request){
         $request->validate([
             'comment_id' => 'required',
+            'post_id' => 'required',
             'reply' => 'required'
         ]);
 
         Reply::create([
             'comment_id' => $request->comment_id,
+            'post_id' => $request->post_id,
             'reply' => $request->reply,
         ]);
         session()->flash('msg','comment successfully submitted');

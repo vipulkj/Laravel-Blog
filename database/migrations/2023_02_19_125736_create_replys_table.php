@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('replys', function (Blueprint $table) {
             $table->id();
             $table->integer('comment_id');
+            $table->integer('post_id');
             $table->string('reply');
             $table->timestamps();
         });

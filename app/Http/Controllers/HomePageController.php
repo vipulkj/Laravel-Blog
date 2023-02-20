@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Reply;
 use App\Models\UserContact;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Cache\TagSet;
@@ -38,9 +40,8 @@ class HomePageController extends Controller
 
         $post1 = Post::where('slug', $slug)->first();
         $post_id = $post1->id;
-        $post = Post::where('title',$post_id)->where('status',1)->find($slug);
 
-        // $post = Post::where('status', 1)->find($id);
+        $post = Post::where('status', 1)->find($post_id);
         $views = $post->views;
         $views++;
         Post::where('slug', $slug)->update([
@@ -48,7 +49,11 @@ class HomePageController extends Controller
         ]);
         $relatedPosts = Post::where('category_id', $post->category_id)->where('status', 1)->take(3)->get();
 
-        return view('front.post', compact('post', 'categories', 'relatedPosts'));
+        $comments = Comment::where('post_id', $post_id)->get();
+
+        $replys = Reply::where('post_id', $post_id)->get();
+
+        return view('front.post', compact('post', 'categories', 'relatedPosts','comments','replys'));
     }
 
     public function categorywisepost($slug)

@@ -59,7 +59,7 @@
                 </div>
                 <div class="down-content">
                   <span>{{$post->category->category_name}}</span>
-                  <a href="{{ route('slug.posts',['slug' => $post->slug])}}">
+                  <a href="{{ route('slug.post',['slug' => $post->slug])}}">
                     <h4>{{ $post->title}}</h4>
                   </a>
                   <ul class="post-info">
@@ -122,7 +122,7 @@
                 <div class="content">
                   <ul>
                     @foreach($popularPosts as $post)
-                    <li><a href="{{ route('single.post',['id' => $post->id ])}}">
+                    <li><a href="{{ route('slug.post',['slug' => $post->slug ])}}">
                         <h5>{{ $post->title}}</h5>
                         <span>{{ $post->created_at->format('d M Y')}}</span>
                       </a></li>

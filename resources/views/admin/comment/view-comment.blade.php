@@ -76,6 +76,7 @@
                                             <form action="{{ route('comments.reply')}}" method="post">
                                                 @csrf
                                                 <input name="comment_id" type="hidden" id="comment_id" value="{{ $comment->id }}">
+                                                <input name="post_id" type="hidden" id="post_id" value="{{ $comment->post_id }}">
                                                 <textarea name="reply" id="reply" cols="" rows="" placeholder="Comment Reply" class=" form-control pl-2"></textarea>
                                                 @error('reply')
                                                 <span class="text-danger">{{ $message}}</span>

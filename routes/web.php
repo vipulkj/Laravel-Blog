@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashbordController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserControler;
 use App\Http\Controllers\CommentController;
@@ -46,9 +47,9 @@ Route::get('/logout',[UserControler::class,'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('/admin/index', function () {
-        return view('admin/index');
-    })->name('index');
+
+
+    Route::get('/admin/index',[DashbordController::class,'dashboard'])->name('index');
 
     Route::get('/admin/changepassword',[UserControler::class,'changepassword'])->name('changepassword');
 
@@ -105,7 +106,7 @@ Route::group(['middleware' => ['auth']], function () {
 // front route
 
 Route::get('/',[HomePageController::class,'homepage'])->name('home');
-Route::get('/post/{slug}',[HomePageController::class,'post'])->name('single.post');
+Route::get('/post/{slug}',[HomePageController::class,'post'])->name('slug.post');
 
 Route::get('/category/{slug}',[HomePageController::class,'categorywisepost'])->name('category.posts');
 // Route::get('/post/{slug}',[HomePageController::class,'slugwisepost'])->name('slug.posts');
@@ -123,9 +124,7 @@ Route::get('/front/about', function () {
 Route::get('/front/contact', function () {
     return view('front/contact');
 })->name('contact');
-Route::get('/front/post', function () {
-    return view('front/post');
-})->name('post-detail');
+
 
 Route::post('/post/comments',[CommentController::class,'store'])->name('storecomments');
 Route::post('/contact',[HomePageController::class,'userContactStore'])->name('contactmessage.store');
