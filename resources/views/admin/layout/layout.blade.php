@@ -138,7 +138,7 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="{{ route('user.all')}}" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
+                                <i class="nav-icon fas fa-user"></i>
                                 <p>
                                     Users
                                     <!-- <i class="fas fa-angle-left right"></i> -->
@@ -147,7 +147,7 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="{{ route('comments')}}" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
+                                <i class="nav-icon fas fa-comment"></i>
                                 <p>
                                     Comments
                                     <!-- <i class="fas fa-angle-left right"></i> -->
@@ -156,7 +156,7 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="{{ route('view')}}" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
+                                <i class="nav-icon fas fa-reply"></i>
                                 <p>
                                     Comments Reply
                                     <!-- <i class="fas fa-angle-left right"></i> -->
@@ -165,7 +165,7 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="{{ route('contacts.request')}}" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
+                                <i class="nav-icon fas fa-address-card"></i>
                                 <p>
                                     Contact Requests
                                     <!-- <i class="fas fa-angle-left right"></i> -->
